@@ -1,0 +1,172 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(*"PROGRAMACION PARA PLC #1" *)
+__STEPPRAGMA
+0,2
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB1 := INICIO_PLC1 ;
+IF __EDTB1 THEN
+(*Set coil*)
+PLC2 := TRUE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,4
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB2 := INICIO_PLC2 ;
+__EDTB3 := __EDTB2 ;
+__EDTB4 := __EDTB2 ;
+IF __EDTB4 THEN
+(*Reset coil*)
+PLC2 := FALSE ;
+END_IF ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,7
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,8
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: TOF *)
+TOF_1(LED2, T#3S) ;
+LED1 := TOF_1.Q ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,11
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_00 := LED1 ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,13
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Fall detection on  : _IO_EM_DO_00 with __MEMO__1___IO_EM_DO_00 *)
+(* FB call: TOF *)
+TOF_2((__MEMO__1___IO_EM_DO_00 AND NOT(_IO_EM_DO_00)), T#3S) ;
+UNO := TOF_2.Q ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__1___IO_EM_DO_00 := _IO_EM_DO_00 ; (*Fall detection on  : _IO_EM_DO_00 with __MEMO__1___IO_EM_DO_00 *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,16
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_01 := UNO ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,18
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Fall detection on  : _IO_EM_DO_01 with __MEMO__2___IO_EM_DO_01 *)
+(* FB call: TOF *)
+TOF_3((__MEMO__2___IO_EM_DO_01 AND NOT(_IO_EM_DO_01)), T#3S) ;
+DOS := TOF_3.Q ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__2___IO_EM_DO_01 := _IO_EM_DO_01 ; (*Fall detection on  : _IO_EM_DO_01 with __MEMO__2___IO_EM_DO_01 *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,21
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_02 := DOS ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,23
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Fall detection on  : _IO_EM_DO_02 with __MEMO__3___IO_EM_DO_02 *)
+(* FB call: TOF *)
+TOF_4((__MEMO__3___IO_EM_DO_02 AND NOT(_IO_EM_DO_02)), T#3S) ;
+TRES := TOF_4.Q ;
+
+(*************** Code for the end of Rung **************)
+__MEMO__3___IO_EM_DO_02 := _IO_EM_DO_02 ; (*Fall detection on  : _IO_EM_DO_02 with __MEMO__3___IO_EM_DO_02 *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,26
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+_IO_EM_DO_03 := TRES ;
+
+(*************** Code for the end of Rung **************)
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __EDTB4 *)
+(* __MEMO__1___IO_EM_DO_00 *)
+(* __MEMO__2___IO_EM_DO_01 *)
+(* __MEMO__3___IO_EM_DO_02 *)
+

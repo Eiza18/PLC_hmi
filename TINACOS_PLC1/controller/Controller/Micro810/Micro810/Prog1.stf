@@ -1,0 +1,20 @@
+PROGRAM Prog1
+#info= QLD
+BOF
+
+
+(*"PROGRAMACION PARA PLC #1"
+Cisterna 2: Si la Cisterna 3 y 1 estan vacias y la Cisterna 2 esta en los 10mil lts se encenderá un indicador amarillo.
+*)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*_IO_EM_DI_00*) (*Nivel_L1B_Cisterna1*)  XIO  [2,0] (*_IO_EM_DI_01*) (*Nivel_L2B_Cisterna2*)  XIC  [3,0] (*_IO_EM_DI_02*) (*Nivel_L3B_Cisterna3*)  OTE  [4,0] (*_IO_EM_DO_02*) (*Cisterna2_Led_Ambar*)
+EOR [5,0]
+
+
+(*Cisterna 2: Si la cisterna 3 y 1 estan vacias y la Cisterna 2 esta vacia sen encenderá un indicador rojo*)
+
+SOR  [0,3] (**) (**)  XIC  [1,0] (*_IO_EM_DI_00*) (*Nivel_L1B_Cisterna1*)  XIC  [2,0] (*_IO_EM_DI_01*) (*Nivel_L2B_Cisterna2*)  XIC  [3,0] (*_IO_EM_DI_02*) (*Nivel_L3B_Cisterna3*)  OTE  [4,0] (*_IO_EM_DO_03*) (*Cisterna2_Led_Rojo*)
+EOR [5,0]
+EOF
+#end_info
+END_PROGRAM
